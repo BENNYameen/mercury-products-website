@@ -131,12 +131,12 @@ textarea {
    Large elliptical radial gradients achieve the same soft-glow look at zero render cost. */
 
 .hero-premium-bg {
-  background-color: #05070d;
+  background-color: #050508;
   background-image:
-    radial-gradient(ellipse 90% 70% at 15% 20%, rgba(130, 20, 210, 0.38), transparent 65%),
-    radial-gradient(ellipse 70% 60% at 88% 28%, rgba(0, 190, 170, 0.16), transparent 60%),
-    radial-gradient(ellipse 110% 80% at 50% 55%, rgba(50, 5, 90, 0.45), transparent 70%),
-    radial-gradient(ellipse 55% 45% at 20% 88%, rgba(90, 20, 200, 0.1), transparent 55%);
+    radial-gradient(ellipse 70% 60% at 8% 22%, rgba(139, 92, 246, calc(var(--glow-opacity, 1) * 0.38)), transparent 65%),
+    radial-gradient(ellipse 55% 55% at 2% 48%, rgba(236, 72, 153, calc(var(--glow-opacity, 1) * 0.28)), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 92% 38%, rgba(6, 182, 212, calc(var(--glow-opacity, 1) * 0.32)), transparent 65%),
+    radial-gradient(ellipse 50% 50% at 95% 12%, rgba(20, 184, 166, calc(var(--glow-opacity, 1) * 0.22)), transparent 50%);
   isolation: isolate;
 }
 
@@ -144,22 +144,11 @@ textarea {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background-size: 56px 56px;
   background-image:
-    repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent 119px,
-      rgba(255, 255, 255, 0.03) 119px,
-      rgba(255, 255, 255, 0.03) 120px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 89px,
-      rgba(255, 255, 255, 0.03) 89px,
-      rgba(255, 255, 255, 0.03) 90px
-    );
-  opacity: 0.7;
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  pointer-events: none;
 }
 
 /* Removed hero-vertical-bands (had filter: blur(18px) + continuous animation) */
@@ -180,11 +169,11 @@ textarea {
   position: relative;
   isolation: isolate;
   min-height: 100vh;
-  background-color: #05070d;
+  background-color: #050508;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 18%, rgba(110, 15, 180, 0.28), transparent 60%),
-    radial-gradient(ellipse 65% 55% at 90% 25%, rgba(0, 170, 150, 0.12), transparent 55%),
-    radial-gradient(ellipse 100% 75% at 50% 60%, rgba(40, 5, 80, 0.38), transparent 70%);
+    radial-gradient(ellipse 65% 55% at 8% 18%, rgba(139, 92, 246, calc(var(--glow-opacity, 1) * 0.25)), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 92% 25%, rgba(6, 182, 212, calc(var(--glow-opacity, 1) * 0.20)), transparent 55%),
+    radial-gradient(ellipse 80% 65% at 50% 60%, rgba(130, 20, 210, calc(var(--glow-opacity, 1) * 0.15)), transparent 70%);
 }
 
 /* Simplified overlays — no filter, no animation */
@@ -192,23 +181,12 @@ textarea {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background-size: 56px 56px;
   background-image:
-    repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent 119px,
-      rgba(255, 255, 255, 0.025) 119px,
-      rgba(255, 255, 255, 0.025) 120px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 89px,
-      rgba(255, 255, 255, 0.025) 89px,
-      rgba(255, 255, 255, 0.025) 90px
-    );
-  opacity: 0.5;
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   pointer-events: none;
+  opacity: 0.7;
 }
 
 .site-vertical-bands { display: none; }
@@ -223,7 +201,7 @@ textarea {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #22d3ee 0%, #818cf8 30%, #c084fc 60%, #f472b6 100%);
+  background: linear-gradient(90deg, #00C2FF 0%, #7C5CFF 32%, #FF5FC7 62%, #FF9B2F 85%, #FFD02C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -776,3 +754,36 @@ details.faq-item[open] { border-color: rgba(255,255,255,0.12); }
 .featured-post-card:hover .featured-post-img {
   transform: scale(1.04);
 }
+
+/* Range slider thumb custom styling */
+.glow-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.glow-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.glow-range-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.glow-range-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+

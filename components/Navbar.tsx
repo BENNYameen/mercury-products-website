@@ -111,10 +111,19 @@ export default function Navbar() {
           >
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0" style={{ gap: "10px" }}>
-              <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "linear-gradient(135deg,#22d3ee 0%,#a855f7 50%,#f472b6 100%)", boxShadow: "0 0 0 1px rgba(168,85,247,0.3),0 0 10px rgba(168,85,247,0.35)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <div style={{ width: "11px", height: "11px", borderRadius: "50%", border: "2px solid rgba(255,255,255,0.55)", background: "rgba(255,255,255,0.12)" }} />
-              </div>
-              <span style={{ fontFamily: "Times New Roman, Times, Georgia, serif", fontWeight: 700, fontSize: "17px", letterSpacing: "0.01em", color: "#ffffff", lineHeight: 1, whiteSpace: "nowrap" }}>Mercury Products</span>
+              <img
+                src="/logo.png"
+                alt="Mercury Products Logo"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  boxShadow: "0 0 10px rgba(0, 194, 255, 0.2)",
+                  objectFit: "cover"
+                }}
+              />
+              <span style={{ fontFamily: "'Times New Roman', Times, Georgia, serif", fontWeight: 700, fontSize: "17px", letterSpacing: "0.01em", color: "#ffffff", lineHeight: 1, whiteSpace: "nowrap" }}>Mercury Products</span>
             </Link>
 
             {/* Desktop nav */}

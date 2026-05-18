@@ -70,10 +70,19 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-              <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: "linear-gradient(135deg,#22d3ee,#c084fc)", border: "1px solid rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: "rgba(255,255,255,0.2)" }} />
-              </div>
-              <span style={{ fontFamily: "Times New Roman, Times, Georgia, serif", fontWeight: 700, fontSize: "16px", color: "#ffffff", letterSpacing: "0.01em" }}>{COMPANY_NAME}</span>
+              <img
+                src="/logo.png"
+                alt="Mercury Products Logo"
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  boxShadow: "0 0 10px rgba(0, 194, 255, 0.2)",
+                  objectFit: "cover"
+                }}
+              />
+              <span style={{ fontFamily: "'Times New Roman', Times, Georgia, serif", fontWeight: 700, fontSize: "16px", color: "#ffffff", letterSpacing: "0.01em" }}>{COMPANY_NAME}</span>
             </div>
             <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, margin: "0 0 20px 0", maxWidth: "220px" }}>
               Premium UV printing since 1990. Custom signage, display, stickers, and industrial packaging.
