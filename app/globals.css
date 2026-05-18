@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #0a0a0a;
-  --color-surface: #141414;
-  --color-surface-2: #1c1c1c;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.16);
-  --color-text-primary: #ffffff;
-  --color-text-muted: rgba(255, 255, 255, 0.55);
-  --color-text-dim: rgba(255, 255, 255, 0.35);
-  --color-cyan: #22d3ee;
+  --color-background: var(--bg-color);
+  --color-surface: var(--card-bg);
+  --color-surface-2: var(--card-bg);
+  --color-border: var(--card-border);
+  --color-border-hover: var(--card-border-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+  --color-cyan: #00c2ff;
   --color-blue: #818cf8;
   --color-purple: #c084fc;
   --color-pink: #f472b6;
@@ -20,6 +20,42 @@
 }
 
 :root {
+  /* Dark Mode Default Values */
+  --bg-color: #050508;
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --text-dim: rgba(255, 255, 255, 0.35);
+  
+  --card-bg: #141414;
+  --card-bg-rgb: 20, 20, 20;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(255, 255, 255, 0.16);
+  
+  --grid-color: rgba(255, 255, 255, 0.04);
+  --grid-color-site: rgba(255, 255, 255, 0.025);
+  
+  --mesh-glow-1: rgba(139, 92, 246, 0.38);
+  --mesh-glow-2: rgba(236, 72, 153, 0.28);
+  --mesh-glow-3: rgba(6, 182, 212, 0.32);
+  --mesh-glow-4: rgba(20, 184, 166, 0.22);
+  
+  --navbar-bg: rgba(5, 5, 8, 0.72);
+  --navbar-border: rgba(255, 255, 255, 0.06);
+
+  --thickness-bg: rgba(255, 255, 255, 0.015);
+  --thickness-bg-hover: rgba(255, 255, 255, 0.035);
+  --thickness-border: rgba(255, 255, 255, 0.04);
+  --thickness-border-hover: rgba(255, 255, 255, 0.09);
+  --thickness-line: rgba(255, 255, 255, 0.05);
+  --thickness-line-hover: rgba(255, 255, 255, 0.15);
+
+  --hover-bg-rgb: 255, 255, 255;
+
+  --cta-btn-bg: #ffffff;
+  --cta-btn-text: #050508;
+  --cta-btn-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  --cta-btn-shadow-hover: 0 6px 20px rgba(0,0,0,0.4);
+
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -28,6 +64,46 @@
   --space-6: 64px;
   --space-7: 96px;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --cursor-glow-color: rgba(6, 182, 212, 0.08);
+}
+
+.light-mode {
+  /* Day Mode Values */
+  --bg-color: #f7f7fa;
+  --text-primary: #0a0a0c;
+  --text-muted: rgba(10, 10, 12, 0.62);
+  --text-dim: rgba(10, 10, 12, 0.4);
+  
+  --card-bg: #ffffff;
+  --card-bg-rgb: 255, 255, 255;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-border-hover: rgba(0, 0, 0, 0.12);
+  
+  --grid-color: rgba(0, 0, 0, 0.03);
+  --grid-color-site: rgba(0, 0, 0, 0.018);
+  
+  --mesh-glow-1: rgba(139, 92, 246, 0.12);
+  --mesh-glow-2: rgba(236, 72, 153, 0.09);
+  --mesh-glow-3: rgba(6, 182, 212, 0.11);
+  --mesh-glow-4: rgba(20, 184, 166, 0.08);
+  
+  --navbar-bg: rgba(255, 255, 255, 0.75);
+  --navbar-border: rgba(0, 0, 0, 0.07);
+
+  --thickness-bg: rgba(0, 0, 0, 0.015);
+  --thickness-bg-hover: rgba(0, 0, 0, 0.035);
+  --thickness-border: rgba(0, 0, 0, 0.05);
+  --thickness-border-hover: rgba(0, 0, 0, 0.12);
+  --thickness-line: rgba(0, 0, 0, 0.06);
+  --thickness-line-hover: rgba(0, 0, 0, 0.18);
+
+  --hover-bg-rgb: 0, 0, 0;
+
+  --cta-btn-bg: #050508;
+  --cta-btn-text: #ffffff;
+  --cta-btn-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  --cta-btn-shadow-hover: 0 6px 20px rgba(0,0,0,0.22);
+  --cursor-glow-color: rgba(236, 72, 153, 0.05);
 }
 
 * {
@@ -41,13 +117,14 @@ html {
 }
 
 body {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: var(--bg-color);
+  color: var(--text-primary);
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition: background-color 0.4s var(--ease-premium), color 0.4s var(--ease-premium);
 }
 
 img {
@@ -131,13 +208,14 @@ textarea {
    Large elliptical radial gradients achieve the same soft-glow look at zero render cost. */
 
 .hero-premium-bg {
-  background-color: #050508;
+  background-color: var(--bg-color);
   background-image:
-    radial-gradient(ellipse 70% 60% at 8% 22%, rgba(139, 92, 246, calc(var(--glow-opacity, 1) * 0.38)), transparent 65%),
-    radial-gradient(ellipse 55% 55% at 2% 48%, rgba(236, 72, 153, calc(var(--glow-opacity, 1) * 0.28)), transparent 60%),
-    radial-gradient(ellipse 70% 60% at 92% 38%, rgba(6, 182, 212, calc(var(--glow-opacity, 1) * 0.32)), transparent 65%),
-    radial-gradient(ellipse 50% 50% at 95% 12%, rgba(20, 184, 166, calc(var(--glow-opacity, 1) * 0.22)), transparent 50%);
+    radial-gradient(ellipse 70% 60% at 8% 22%, var(--mesh-glow-1), transparent 65%),
+    radial-gradient(ellipse 55% 55% at 2% 48%, var(--mesh-glow-2), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 92% 38%, var(--mesh-glow-3), transparent 65%),
+    radial-gradient(ellipse 50% 50% at 95% 12%, var(--mesh-glow-4), transparent 50%);
   isolation: isolate;
+  transition: background-color 0.4s var(--ease-premium), background-image 0.4s var(--ease-premium);
 }
 
 .hero-grid-overlay {
@@ -146,22 +224,24 @@ textarea {
   z-index: 1;
   background-size: 56px 56px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   pointer-events: none;
+  transition: background-image 0.4s var(--ease-premium);
 }
 
-/* Removed hero-vertical-bands (had filter: blur(18px) + continuous animation) */
+/* Removed hero-vertical-bands */
 .hero-vertical-bands { display: none; }
 
-/* Removed hero-noise (repeating micro-radial on full page) */
+/* Removed hero-noise */
 .hero-noise { display: none; }
 
 .hero-vignette {
   position: absolute;
   inset: 0;
   z-index: 4;
-  background: radial-gradient(ellipse 80% 60% at 50% 42%, transparent 30%, rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(ellipse 80% 60% at 50% 42%, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
 }
 
 /* ── Site-wide premium background (all pages) ── */
@@ -169,11 +249,12 @@ textarea {
   position: relative;
   isolation: isolate;
   min-height: 100vh;
-  background-color: #050508;
+  background-color: var(--bg-color);
   background-image:
-    radial-gradient(ellipse 65% 55% at 8% 18%, rgba(139, 92, 246, calc(var(--glow-opacity, 1) * 0.25)), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 92% 25%, rgba(6, 182, 212, calc(var(--glow-opacity, 1) * 0.20)), transparent 55%),
-    radial-gradient(ellipse 80% 65% at 50% 60%, rgba(130, 20, 210, calc(var(--glow-opacity, 1) * 0.15)), transparent 70%);
+    radial-gradient(ellipse 65% 55% at 8% 18%, var(--mesh-glow-1), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 92% 25%, var(--mesh-glow-3), transparent 55%),
+    radial-gradient(ellipse 80% 65% at 50% 60%, var(--mesh-glow-2), transparent 70%);
+  transition: background-color 0.4s var(--ease-premium);
 }
 
 /* Simplified overlays — no filter, no animation */
@@ -183,10 +264,11 @@ textarea {
   z-index: 1;
   background-size: 56px 56px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color-site) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color-site) 1px, transparent 1px);
   pointer-events: none;
   opacity: 0.7;
+  transition: background-image 0.4s var(--ease-premium);
 }
 
 .site-vertical-bands { display: none; }
@@ -196,7 +278,7 @@ textarea {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: radial-gradient(ellipse 90% 70% at 50% 42%, transparent 35%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(ellipse 90% 70% at 50% 42%, transparent 35%, rgba(0, 0, 0, 0.3) 100%);
   pointer-events: none;
 }
 
@@ -233,20 +315,118 @@ textarea {
 }
 
 .card {
-  background: #141414;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   transition:
     border-color 0.3s var(--ease-premium),
     transform 0.3s var(--ease-premium),
-    box-shadow 0.3s var(--ease-premium);
+    box-shadow 0.3s var(--ease-premium),
+    background-color 0.4s var(--ease-premium);
   will-change: transform;
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--card-border-hover);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.view-all-link {
+  transition: color 0.3s var(--ease-premium);
+}
+.view-all-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.browse-products-btn {
+  transition: all 0.3s var(--ease-premium);
+}
+.browse-products-btn:hover {
+  color: var(--text-primary) !important;
+}
+
+.footer-link {
+  transition: color 0.15s var(--ease-premium);
+}
+.footer-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.breadcrumb-link {
+  transition: color 0.15s var(--ease-premium);
+}
+.breadcrumb-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.nav-link-hover {
+  transition: all 0.2s var(--ease-premium) !important;
+}
+.nav-link-hover:hover {
+  background: rgba(var(--hover-bg-rgb), 0.07) !important;
+}
+
+.nav-text-hover {
+  transition: color 0.2s var(--ease-premium) !important;
+}
+.nav-text-hover:hover {
+  color: var(--text-primary) !important;
+}
+
+.nav-cta-btn {
+  height: 42px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 9999px;
+  background: var(--cta-btn-bg);
+  color: var(--cta-btn-text);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow: var(--cta-btn-shadow);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.nav-cta-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--cta-btn-shadow-hover);
+}
+
+.sticky-quote-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg,#ec4899,#f97316);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(236,72,153,0.45), 0 2px 8px rgba(0,0,0,0.4);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.sticky-quote-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 36px rgba(236,72,153,0.55), 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.service-card-link {
+  text-decoration: none;
+  display: block;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--thickness-bg);
+  border: 1px solid var(--thickness-border);
+  transition: all 0.3s var(--ease-premium);
+}
+.service-card-link:hover {
+  border-color: var(--card-border-hover) !important;
+  background: var(--thickness-bg-hover) !important;
+  transform: translateY(-3px);
 }
 
 /* ── Ticker / Marquee animation ── */

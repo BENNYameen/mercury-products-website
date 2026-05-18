@@ -81,9 +81,9 @@ export default function Navbar() {
   const navItemStyle = (active: boolean): React.CSSProperties => ({
     fontSize: "14px",
     fontWeight: 500,
-    color: active ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.72)",
+    color: active ? "var(--text-primary)" : "var(--text-muted)",
     textDecoration: "none",
-    transition: "color 0.2s ease",
+    transition: "color 0.3s var(--ease-premium)",
     display: "inline-flex",
     alignItems: "center",
     gap: "4px",
@@ -100,15 +100,25 @@ export default function Navbar() {
   return (
     <>
       <div
-        className="fixed left-0 right-0 z-50 flex justify-center px-4"
-        style={{ top: "32px", transition: "opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)", opacity: mounted ? 1 : 0, transform: mounted ? "translate3d(0,0,0)" : "translate3d(0,-18px,0)", willChange: "transform, opacity" }}
+        className="fixed left-0 right-0 z-50 flex justify-center"
+        style={{ top: "0px", transition: "opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)", opacity: mounted ? 1 : 0, transform: mounted ? "translate3d(0,0,0)" : "translate3d(0,-18px,0)", willChange: "transform, opacity" }}
       >
-        <div style={{ width: "100%", maxWidth: "1200px" }}>
-          {/* Pill nav */}
+        <div style={{ width: "100%" }}>
+          {/* Full bleed sticky header */}
           <nav
-            style={{ height: "68px", background: "rgba(15,15,22,0.82)", backdropFilter: "blur(20px) saturate(180%)", WebkitBackdropFilter: "blur(20px) saturate(180%)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: "9999px", boxShadow: "0 12px 34px rgba(0,0,0,0.46), 0 3px 10px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07)", isolation: "isolate" }}
-            className="flex items-center justify-between px-6"
+            style={{ 
+              height: "72px", 
+              background: "var(--navbar-bg)", 
+              backdropFilter: "blur(24px) saturate(180%)", 
+              WebkitBackdropFilter: "blur(24px) saturate(180%)", 
+              borderBottom: "1px solid var(--navbar-border)", 
+              boxShadow: "0 4px 30px rgba(0,0,0,0.15)", 
+              isolation: "isolate",
+              transition: "background 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium)"
+            }}
+            className="flex items-center justify-center px-6 md:px-10"
           >
+            <div style={{ width: "100%", maxWidth: "1200px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0" style={{ gap: "10px" }}>
               <img
@@ -118,12 +128,13 @@ export default function Navbar() {
                   width: "36px",
                   height: "36px",
                   borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  boxShadow: "0 0 10px rgba(0, 194, 255, 0.2)",
-                  objectFit: "cover"
+                  border: "1px solid var(--card-border)",
+                  boxShadow: "0 0 10px rgba(0, 194, 255, 0.15)",
+                  objectFit: "cover",
+                  transition: "border-color 0.4s var(--ease-premium)"
                 }}
               />
-              <span style={{ fontFamily: "'Times New Roman', Times, Georgia, serif", fontWeight: 700, fontSize: "17px", letterSpacing: "0.01em", color: "#ffffff", lineHeight: 1, whiteSpace: "nowrap" }}>Mercury Products</span>
+              <span style={{ fontFamily: "'Times New Roman', Times, Georgia, serif", fontWeight: 700, fontSize: "17px", letterSpacing: "0.01em", color: "var(--text-primary)", lineHeight: 1, whiteSpace: "nowrap", transition: "color 0.4s var(--ease-premium)" }}>Mercury Products</span>
             </Link>
 
             {/* Desktop nav */}
@@ -141,16 +152,14 @@ export default function Navbar() {
 
                 {openDropdown === "products" && (
                   <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}
-                    style={{ position: "absolute", top: "calc(100% + 16px)", left: "50%", transform: "translateX(-50%)", width: "640px", borderRadius: "24px", background: "rgba(13,13,20,0.97)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 24px 64px rgba(0,0,0,0.6)", padding: "24px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
+                    style={{ position: "absolute", top: "calc(100% + 16px)", left: "50%", transform: "translateX(-50%)", width: "640px", borderRadius: "24px", background: "rgba(var(--card-bg-rgb), 0.97)", backdropFilter: "blur(24px)", border: "1px solid var(--card-border)", boxShadow: "0 24px 64px rgba(0,0,0,0.18)", padding: "24px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
                       {productGroups.map((group) => (
                         <div key={group.label}>
                           <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: group.color, margin: "0 0 10px 0" }}>{group.label}</p>
                           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                             {group.items.map((p) => (
-                              <Link key={p.slug} href={`/products/${p.slug}`} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "7px 10px", borderRadius: "10px", textDecoration: "none", transition: "background 0.15s ease", color: "rgba(255,255,255,0.72)", fontSize: "13px", fontWeight: 500 }}
-                                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.07)")}
-                                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
+                              <Link key={p.slug} href={`/products/${p.slug}`} className="nav-link-hover" style={{ display: "flex", alignItems: "center", gap: "8px", padding: "7px 10px", borderRadius: "10px", textDecoration: "none", color: "var(--text-muted)", fontSize: "13px", fontWeight: 500 }}>
                                 <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: DOT_COLOR[p.category], flexShrink: 0 }} />
                                 {p.name}
                               </Link>
@@ -159,10 +168,8 @@ export default function Navbar() {
                         </div>
                       ))}
                     </div>
-                    <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <Link href="/catalog" style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>
+                    <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid var(--card-border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <Link href="/catalog" className="nav-text-hover" style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-dim)", textDecoration: "none" }}>
                         View all 13 products →
                       </Link>
                       <Link href="/quote" style={{ padding: "8px 16px", borderRadius: "9999px", background: "linear-gradient(135deg,#ec4899,#f97316)", color: "#ffffff", fontWeight: 700, fontSize: "12px", textDecoration: "none" }}>
@@ -184,11 +191,9 @@ export default function Navbar() {
 
                 {openDropdown === "services" && (
                   <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}
-                    style={{ position: "absolute", top: "calc(100% + 16px)", left: "50%", transform: "translateX(-50%)", width: "240px", borderRadius: "20px", background: "rgba(13,13,20,0.97)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 24px 64px rgba(0,0,0,0.6)", padding: "12px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
+                    style={{ position: "absolute", top: "calc(100% + 16px)", left: "50%", transform: "translateX(-50%)", width: "240px", borderRadius: "20px", background: "rgba(var(--card-bg-rgb), 0.97)", backdropFilter: "blur(24px)", border: "1px solid var(--card-border)", boxShadow: "0 24px 64px rgba(0,0,0,0.18)", padding: "12px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
                     {serviceLinks.map((s) => (
-                      <Link key={s.href} href={s.href} style={{ display: "block", padding: "9px 12px", borderRadius: "10px", fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.72)", textDecoration: "none", transition: "background 0.15s ease" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.07)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
+                      <Link key={s.href} href={s.href} className="nav-link-hover" style={{ display: "block", padding: "9px 12px", borderRadius: "10px", fontSize: "13px", fontWeight: 500, color: "var(--text-muted)", textDecoration: "none" }}>
                         {s.label}
                       </Link>
                     ))}
@@ -201,12 +206,10 @@ export default function Navbar() {
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
-                <Link key={l.href} href={l.href} style={{ ...navItemStyle(pathname === l.href), padding: "4px 10px" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = pathname === l.href ? "#ffffff" : "rgba(255,255,255,0.72)")}>
+                <Link key={l.href} href={l.href} className="nav-text-hover" style={{ ...navItemStyle(pathname === l.href), padding: "4px 10px" }}>
                   {l.label}
                   {pathname === l.href && (
-                    <span style={{ position: "absolute", bottom: "-6px", left: "50%", transform: "translateX(-50%)", width: "4px", height: "4px", borderRadius: "50%", background: "rgba(255,255,255,0.6)" }} />
+                    <span style={{ position: "absolute", bottom: "-6px", left: "50%", transform: "translateX(-50%)", width: "4px", height: "4px", borderRadius: "50%", background: "var(--text-primary)" }} />
                   )}
                 </Link>
               ))}
@@ -222,13 +225,11 @@ export default function Navbar() {
 
                 {openDropdown === "resources" && (
                   <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}
-                    style={{ position: "absolute", top: "calc(100% + 16px)", right: "0", width: "220px", borderRadius: "20px", background: "rgba(13,13,20,0.97)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 24px 64px rgba(0,0,0,0.6)", padding: "12px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
+                    style={{ position: "absolute", top: "calc(100% + 16px)", right: "0", width: "220px", borderRadius: "20px", background: "rgba(var(--card-bg-rgb), 0.97)", backdropFilter: "blur(24px)", border: "1px solid var(--card-border)", boxShadow: "0 24px 64px rgba(0,0,0,0.18)", padding: "12px", animation: "dropdownIn 0.2s cubic-bezier(0.22,1,0.36,1)" }}>
                     {resourceLinks.map((r) => (
-                      <Link key={r.href} href={r.href} style={{ display: "block", padding: "9px 12px", borderRadius: "10px", textDecoration: "none", transition: "background 0.15s ease" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.07)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
-                        <span style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.72)", display: "block" }}>{r.label}</span>
-                        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginTop: "1px" }}>{r.desc}</span>
+                      <Link key={r.href} href={r.href} className="nav-link-hover" style={{ display: "block", padding: "9px 12px", borderRadius: "10px", textDecoration: "none" }}>
+                        <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", display: "block" }}>{r.label}</span>
+                        <span style={{ fontSize: "11px", color: "var(--text-dim)", display: "block", marginTop: "1px" }}>{r.desc}</span>
                       </Link>
                     ))}
                   </div>
@@ -238,10 +239,7 @@ export default function Navbar() {
 
             {/* CTA + mobile toggle */}
             <div className="flex items-center" style={{ gap: "12px" }}>
-              <Link href="/quote" className="hidden md:flex items-center"
-                style={{ height: "42px", paddingLeft: "22px", paddingRight: "22px", borderRadius: "9999px", background: "#ffffff", color: "#000000", fontWeight: 700, fontSize: "13px", letterSpacing: "-0.01em", textDecoration: "none", whiteSpace: "nowrap", boxShadow: "0 2px 8px rgba(0,0,0,0.25)", transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1),box-shadow 0.2s ease", display: "flex", gap: "5px" }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px) scale(1.02)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.25)"; }}>
+              <Link href="/quote" className="hidden md:flex items-center nav-cta-btn" style={{ display: "flex", gap: "5px" }}>
                 Get a Quote <span style={{ fontSize: "16px", lineHeight: 1 }}>→</span>
               </Link>
 
@@ -256,7 +254,8 @@ export default function Navbar() {
                 </svg>
               </button>
             </div>
-          </nav>
+          </div>
+        </nav>
 
           {/* Mobile dropdown */}
           <div className="md:hidden"

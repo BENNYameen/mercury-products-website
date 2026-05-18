@@ -3,39 +3,68 @@
 import { useState, useEffect } from "react";
 
 export default function GlowSlider() {
-  const [opacity, setOpacity] = useState(0.85);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
+  // Initialize theme from localStorage or system preference
   useEffect(() => {
-    // Dynamically set CSS custom property on the root HTML element
-    document.documentElement.style.setProperty("--glow-opacity", opacity.toString());
-  }, [opacity]);
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      setIsDarkMode(false);
+      document.documentElement.classList.add("light-mode");
+    } else {
+      setIsDarkMode(true);
+      document.documentElement.classList.remove("light-mode");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextState = !isDarkMode;
+    setIsDarkMode(nextState);
+    if (nextState) {
+      document.documentElement.classList.remove("light-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.add("light-mode");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   return (
     <div
+      onClick={toggleTheme}
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: "14px",
-        background: "rgba(255, 255, 255, 0.04)",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
+        gap: "16px",
+        background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "rgba(0, 0, 0, 0.04)",
+        border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(0, 0, 0, 0.08)",
         borderRadius: "9999px",
-        padding: "10px 24px",
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+        padding: "8px 10px 8px 18px",
+        boxShadow: isDarkMode 
+          ? "0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)"
+          : "0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
+        cursor: "pointer",
+        transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+        userSelect: "none",
       }}
+      className="theme-toggle-container hover:scale-[1.02] active:scale-[0.98]"
     >
       {/* Sun/brightness icon */}
       <svg
-        width="15"
-        height="15"
+        width="16"
+        height="16"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{ color: "rgba(255, 255, 255, 0.75)" }}
+        style={{ 
+          color: isDarkMode ? "rgba(255, 255, 255, 0.75)" : "rgba(0, 0, 0, 0.65)",
+          transition: "color 0.3s ease"
+        }}
       >
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2" />
@@ -48,27 +77,35 @@ export default function GlowSlider() {
         <path d="M19.07 4.93l-1.41 1.41" />
       </svg>
 
-      {/* Slider range input */}
-      <input
-        type="range"
-        min="0.1"
-        max="1.5"
-        step="0.05"
-        value={opacity}
-        onChange={(e) => setOpacity(parseFloat(e.target.value))}
-        aria-label="Ambient Glow Intensity"
+      {/* Slide Switch Capsule matching user screenshot */}
+      <div
         style={{
-          width: "120px",
-          height: "4px",
+          width: "56px",
+          height: "28px",
           borderRadius: "9999px",
-          background: "rgba(255, 255, 255, 0.12)",
-          outline: "none",
-          appearance: "none",
-          WebkitAppearance: "none",
-          cursor: "pointer",
+          background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)",
+          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid rgba(0, 0, 0, 0.06)",
+          padding: "3px",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          transition: "background 0.3s ease"
         }}
-        className="glow-range-slider"
-      />
+      >
+        {/* Sliding thumb */}
+        <div
+          style={{
+            width: "20px",
+            height: "20px",
+            borderRadius: "50%",
+            background: isDarkMode ? "#ffffff" : "#0a0a0c",
+            boxShadow: isDarkMode ? "0 0 10px #ffffff" : "0 2px 6px rgba(0,0,0,0.15)",
+            position: "absolute",
+            left: isDarkMode ? "31px" : "3px",
+            transition: "left 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, box-shadow 0.3s ease"
+          }}
+        />
+      </div>
     </div>
   );
 }

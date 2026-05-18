@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   },
   description:
     "Mercury Products is a premium UV printing company in India. We print on sunpack, foam board, acrylic, glass, wood, canvas, vinyl, and flex — delivering professional-grade signage, display, and branding solutions.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   keywords: [
     "UV printing India",
     "sunpack printing",

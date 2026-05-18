@@ -106,13 +106,11 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>Products</p>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-dim)", marginBottom: "16px", transition: "color 0.3s ease" }}>Products</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "9px" }}>
               {productLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} style={{ fontSize: "13px", color: "rgba(255,255,255,0.52)", textDecoration: "none", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.52)")}>
+                  <Link href={l.href} className="footer-link" style={{ fontSize: "13px", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.15s" }}>
                     {l.label}
                   </Link>
                 </li>
@@ -125,13 +123,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>Services</p>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-dim)", marginBottom: "16px", transition: "color 0.3s ease" }}>Services</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "9px" }}>
               {serviceLinks.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} style={{ fontSize: "13px", color: "rgba(255,255,255,0.52)", textDecoration: "none", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.52)")}>
+                  <Link href={l.href} className="footer-link" style={{ fontSize: "13px", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.15s" }}>
                     {l.label}
                   </Link>
                 </li>
@@ -141,13 +137,11 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>Resources</p>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-dim)", marginBottom: "16px", transition: "color 0.3s ease" }}>Resources</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "9px" }}>
               {resourceLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} style={{ fontSize: "13px", color: "rgba(255,255,255,0.52)", textDecoration: "none", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.52)")}>
+                  <Link href={l.href} className="footer-link" style={{ fontSize: "13px", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.15s" }}>
                     {l.label}
                   </Link>
                 </li>
@@ -157,13 +151,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>Company</p>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-dim)", marginBottom: "16px", transition: "color 0.3s ease" }}>Company</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "9px" }}>
               {companyLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} style={{ fontSize: "13px", color: "rgba(255,255,255,0.52)", textDecoration: "none", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.52)")}>
+                  <Link href={l.href} className="footer-link" style={{ fontSize: "13px", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.15s" }}>
                     {l.label}
                   </Link>
                 </li>

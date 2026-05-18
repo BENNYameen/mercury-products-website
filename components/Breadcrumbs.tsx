@@ -20,9 +20,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "13px" }}>›</span>
             )}
             {item.href ? (
-              <Link href={item.href} style={{ fontSize: "13px", color: "rgba(255,255,255,0.42)", textDecoration: "none", transition: "color 0.15s ease" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.42)")}>
+              <Link href={item.href} className="breadcrumb-link" style={{ fontSize: "13px", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.15s ease" }}>
                 {item.label}
               </Link>
             ) : (

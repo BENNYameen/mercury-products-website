@@ -77,7 +77,8 @@ export default function PaperThickness() {
                     fontWeight: 600,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.4)"
+                    color: "var(--text-muted)",
+                    transition: "color 0.3s ease"
                   }}
                 >
                   / THICKNESS
@@ -89,7 +90,8 @@ export default function PaperThickness() {
                   fontWeight: 800,
                   letterSpacing: "-0.03em",
                   lineHeight: 1.1,
-                  color: "#ffffff"
+                  color: "var(--text-primary)",
+                  transition: "color 0.3s ease"
                 }}
               >
                 Featherweight to <br />
@@ -111,7 +113,8 @@ export default function PaperThickness() {
                   fontSize: "16px",
                   fontWeight: 400,
                   lineHeight: 1.6,
-                  color: "rgba(255,255,255,0.5)"
+                  color: "var(--text-muted)",
+                  transition: "color 0.3s ease"
                 }}
               >
                 Six paper weights. Each tuned for a job. Hold it. You'll feel the difference.
@@ -133,8 +136,8 @@ export default function PaperThickness() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    background: isHovered ? "rgba(255, 255, 255, 0.035)" : "rgba(255, 255, 255, 0.015)",
-                    border: isHovered ? "1px solid rgba(255, 255, 255, 0.09)" : "1px solid rgba(255, 255, 255, 0.04)",
+                    background: isHovered ? "var(--thickness-bg-hover)" : "var(--thickness-bg)",
+                    border: isHovered ? "1px solid var(--thickness-border-hover)" : "1px solid var(--thickness-border)",
                     borderRadius: "16px",
                     padding: "20px 28px",
                     transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -142,8 +145,8 @@ export default function PaperThickness() {
                     position: "relative",
                     overflow: "hidden",
                     boxShadow: isHovered 
-                      ? "0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05)" 
-                      : "inset 0 1px 0 rgba(255, 255, 255, 0.02)",
+                      ? "0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(var(--hover-bg-rgb), 0.05)" 
+                      : "inset 0 1px 0 rgba(var(--hover-bg-rgb), 0.02)",
                   }}
                 >
                   {/* Left Section: GSM info */}
@@ -164,8 +167,9 @@ export default function PaperThickness() {
                         style={{
                           fontSize: "20px",
                           fontWeight: 800,
-                          color: "#ffffff",
-                          letterSpacing: "-0.01em"
+                          color: "var(--text-primary)",
+                          letterSpacing: "-0.01em",
+                          transition: "color 0.3s ease"
                         }}
                       >
                         {w.gsm}
@@ -175,8 +179,9 @@ export default function PaperThickness() {
                           fontSize: "9px",
                           fontWeight: 700,
                           letterSpacing: "0.08em",
-                          color: "rgba(255, 255, 255, 0.38)",
-                          marginTop: "3px"
+                          color: "var(--text-dim)",
+                          marginTop: "3px",
+                          transition: "color 0.3s ease"
                         }}
                       >
                         {w.label}
@@ -220,7 +225,7 @@ export default function PaperThickness() {
                       style={{ 
                         flex: 1, 
                         height: "1px", 
-                        background: isHovered ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.05)",
+                        background: isHovered ? "var(--thickness-line-hover)" : "var(--thickness-line)",
                         transition: "background 0.3s ease",
                         position: "relative"
                       }}
@@ -250,7 +255,7 @@ export default function PaperThickness() {
                     style={{
                       fontSize: "12px",
                       fontWeight: 600,
-                      color: isHovered ? "rgba(255, 255, 255, 0.72)" : "rgba(255, 255, 255, 0.38)",
+                      color: isHovered ? "var(--text-primary)" : "var(--text-muted)",
                       letterSpacing: "0.03em",
                       textAlign: "right",
                       transition: "color 0.3s ease",

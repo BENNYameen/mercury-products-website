@@ -27,32 +27,7 @@ export default function StickyQuoteCTA() {
         pointerEvents: visible ? "auto" : "none",
       }}
     >
-      <Link
-        href="/quote"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "8px",
-          padding: "14px 22px",
-          borderRadius: "9999px",
-          background: "linear-gradient(135deg,#ec4899,#f97316)",
-          color: "#ffffff",
-          fontWeight: 700,
-          fontSize: "14px",
-          textDecoration: "none",
-          boxShadow: "0 8px 28px rgba(236,72,153,0.45), 0 2px 8px rgba(0,0,0,0.4)",
-          letterSpacing: "-0.01em",
-          whiteSpace: "nowrap",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-          e.currentTarget.style.boxShadow = "0 14px 36px rgba(236,72,153,0.55), 0 4px 12px rgba(0,0,0,0.4)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0) scale(1)";
-          e.currentTarget.style.boxShadow = "0 8px 28px rgba(236,72,153,0.45), 0 2px 8px rgba(0,0,0,0.4)";
-        }}
-      >
+      <Link href="/quote" className="sticky-quote-cta">
         Get a Quote →
       </Link>
     </div>

@@ -101,14 +101,43 @@ export default function HomePage() {
             <div className="hero-vignette pointer-events-none" />
 
             <div className="relative z-10 max-w-5xl">
+              {/* Brand Stamp Logo */}
+              <div className="flex items-center gap-3.5 mb-6">
+                <img
+                  src="/logo.png"
+                  alt="Mercury Products Brand Logo"
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "50%",
+                    border: "1.5px solid var(--card-border)",
+                    boxShadow: "0 0 25px rgba(0, 194, 255, 0.25)",
+                    objectFit: "cover",
+                    transition: "border-color 0.4s ease"
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'Times New Roman', Times, Georgia, serif",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    letterSpacing: "0.05em",
+                    color: "var(--text-primary)",
+                    transition: "color 0.4s ease"
+                  }}
+                >
+                  MERCURY
+                </span>
+              </div>
+
               {/* Badges */}
               <div className="flex flex-wrap gap-3 mb-8">
-                <span className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full text-white/70"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                  <span className="text-white/40">✦</span> EST. 1990 · INDIA
+                <span className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full text-text-muted transition-colors duration-355"
+                  style={{ background: "rgba(var(--hover-bg-rgb), 0.07)", border: "1px solid var(--card-border)" }}>
+                  <span className="text-text-dim">✦</span> EST. 1990 · INDIA
                 </span>
-                <span className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full text-white/70"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <span className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full text-text-muted transition-colors duration-355"
+                  style={{ background: "rgba(var(--hover-bg-rgb), 0.07)", border: "1px solid var(--card-border)" }}>
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
                   Press running · 24/7
                 </span>
@@ -116,12 +145,12 @@ export default function HomePage() {
 
               {/* Headline */}
               <h1 className="text-6xl md:text-8xl font-bold leading-[1.05] tracking-tight mb-6">
-                <span className="text-white">Print that</span>
+                <span className="text-text-primary transition-colors duration-355">Print that</span>
                 <br />
                 <span className="gradient-text">feels like art.</span>
               </h1>
 
-              <p className="text-base md:text-lg text-white/55 max-w-lg leading-relaxed mb-10">
+              <p className="text-base md:text-lg text-text-muted max-w-lg leading-relaxed mb-10 transition-colors duration-355">
                 Mercury Products is a creative printing press obsessed with color, paper and the small details that make great brands feel inevitable. Business cards to packaging, foil to spot UV — we press it like we mean it.
               </p>
 
@@ -131,8 +160,8 @@ export default function HomePage() {
                   Start a Quote →
                 </Link>
                 <Link href="/catalog"
-                  className="flex items-center gap-2 text-sm font-medium px-7 py-3.5 rounded-full text-white/80 hover:text-white transition-colors"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                  className="flex items-center gap-2 text-sm font-medium px-7 py-3.5 rounded-full text-text-muted hover:text-text-primary transition-colors"
+                  style={{ background: "rgba(var(--hover-bg-rgb), 0.07)", border: "1px solid var(--card-border)" }}>
                   Explore Products ↗
                 </Link>
               </div>
@@ -168,9 +197,10 @@ export default function HomePage() {
                     fontWeight: 600,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "var(--text-muted)",
                     lineHeight: 1,
-                    marginTop: "3px"
+                    marginTop: "3px",
+                    transition: "color 0.3s ease"
                   }}
                 >
                   {s.label}
@@ -584,31 +614,31 @@ export default function HomePage() {
       {/* About preview */}
       <Reveal delayMs={180}>
         <section className="px-6 md:px-10 mb-20">
-          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden p-10 md:p-16 relative"
-            style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg text-xs font-semibold text-white/50"
-              style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
+          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden p-10 md:p-16 relative transition-all duration-355"
+            style={{ background: "linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--card-bg-rgb), 0.8) 50%, var(--card-bg) 100%)", border: "1px solid var(--card-border)" }}>
+            <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg text-xs font-semibold text-text-muted transition-colors duration-355"
+              style={{ background: "rgba(var(--hover-bg-rgb), 0.07)", border: "1px solid var(--card-border)" }}>
               CERTIFIED · FSC · ISO 9001
             </div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-xs font-semibold tracking-widest uppercase text-white/35">✦ ABOUT MERCURY</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-text-dim transition-colors duration-355">✦ ABOUT MERCURY</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-xl">
+            <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-xl text-text-primary transition-colors duration-355">
               A press built by <span className="gradient-text-3">designers</span>, for designers.
             </h2>
-            <p className="text-sm md:text-base text-white/50 max-w-lg leading-relaxed mb-8">
+            <p className="text-sm md:text-base text-text-muted max-w-lg leading-relaxed mb-8 transition-colors duration-355">
               We started Mercury Products in a 400 sq-ft Brooklyn studio in 2014 with one Heidelberg, two letterpresses, and an obsession with color science. A decade later we run a 12,000 sq-ft facility with Komori UV presses, hot-foil decks, die-cutters, and an in-house finishing studio — but we still answer every email ourselves.
             </p>
             <div className="flex flex-wrap gap-6 mb-8">
               {[{ v: "2014", l: "FOUNDED" }, { v: "42", l: "CRAFTERS" }, { v: "4 cities", l: "STUDIOS" }].map((s) => (
                 <div key={s.l}>
                   <p className="text-2xl font-bold gradient-text">{s.v}</p>
-                  <p className="text-xs tracking-widest uppercase text-white/35 mt-0.5">{s.l}</p>
+                  <p className="text-xs tracking-widest uppercase text-text-dim mt-0.5 transition-colors duration-355">{s.l}</p>
                 </div>
               ))}
             </div>
             <Link href="/about"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors">
+              className="inline-flex items-center gap-2 text-sm font-medium text-text-muted hover:text-text-primary transition-colors">
               Learn more about us →
             </Link>
           </div>
@@ -622,9 +652,9 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-white/35">★ KIND WORDS</span>
+                  <span className="text-xs font-semibold tracking-widest uppercase text-text-dim transition-colors duration-355">★ KIND WORDS</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-bold">
+                <h2 className="text-4xl md:text-6xl font-bold text-text-primary transition-colors duration-355">
                   Brands that <span className="gradient-text">press</span> with us.
                 </h2>
               </div>
@@ -632,31 +662,31 @@ export default function HomePage() {
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => <span key={i} className="text-yellow-400 text-lg">★</span>)}
                 </div>
-                <span className="text-sm text-white/50">4.9 from 1,200+ projects</span>
+                <span className="text-sm text-text-muted transition-colors duration-355">4.9 from 1,200+ projects</span>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {testimonials.map((t) => (
-                <div key={t.name} className="card p-7">
-                  <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-5 opacity-20">
-                    <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 7.2 10.4H12V24H0zm20 0V14.4C20 6.4 24.8 1.6 34.4 0L36 2.4C30.4 3.6 27.6 6.4 27.2 10.4H32V24H20z" fill="white" />
+                <div key={t.name} className="card p-7 transition-all duration-355">
+                  <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-5 opacity-20 text-text-primary transition-colors duration-355">
+                    <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 7.2 10.4H12V24H0zm20 0V14.4C20 6.4 24.8 1.6 34.4 0L36 2.4C30.4 3.6 27.6 6.4 27.2 10.4H32V24H20z" fill="currentColor" />
                   </svg>
-                  <p className="text-sm md:text-base text-white/75 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                  <p className="text-sm md:text-base text-text-muted leading-relaxed mb-6 transition-colors duration-355">&ldquo;{t.quote}&rdquo;</p>
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                      style={{ background: t.color }}>
+                       style={{ background: t.color }}>
                       {t.initials}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-white">{t.name}</p>
-                      <p className="text-xs text-white/40">{t.role}</p>
+                      <p className="text-sm font-semibold text-text-primary transition-colors duration-355">{t.name}</p>
+                      <p className="text-xs text-text-dim transition-colors duration-355">{t.role}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
             <div className="flex justify-center mt-8">
-              <Link href="/testimonials" className="flex items-center gap-2 text-sm font-medium text-white/50 hover:text-white transition-colors">
+              <Link href="/testimonials" className="flex items-center gap-2 text-sm font-medium text-text-muted hover:text-text-primary transition-colors">
                 Read all client stories →
               </Link>
             </div>
@@ -669,13 +699,13 @@ export default function HomePage() {
         <section className="px-6 md:px-10 mb-20">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center gap-2 mb-5">
-              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.32)" }}>⊙ WHAT WE DO</span>
+              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-dim)", transition: "color 0.3s ease" }}>⊙ WHAT WE DO</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
-              <h2 style={{ fontSize: "clamp(32px,5vw,58px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.025em", color: "#ffffff" }}>
+              <h2 style={{ fontSize: "clamp(32px,5vw,58px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.025em", color: "var(--text-primary)", transition: "color 0.3s ease" }}>
                 Every print service,<br /><span className="gradient-text-warm">under one roof.</span>
               </h2>
-              <Link href="/services" className="view-all-link" style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap", transition: "color 0.2s" }}>
+              <Link href="/services" className="view-all-link" style={{ fontSize: "14px", color: "var(--text-muted)", textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap", transition: "color 0.3s ease" }}>
                 View all services →
               </Link>
             </div>
@@ -688,10 +718,10 @@ export default function HomePage() {
                 { icon: "◈", title: "Industrial Packaging", desc: "Rigid sunpack boxes and trays fabricated to precise specifications for industrial, pharmaceutical, and commercial applications.", color: "#fb923c", href: "/services" },
                 { icon: "◎", title: "Custom Solutions", desc: "Bespoke print and fabrication for unique requirements. Our team will scope, design, and produce whatever you have in mind.", color: "#c084fc", href: "/services" },
               ].map((s) => (
-                <Link key={s.title} href={s.href} className="service-card-link" style={{ textDecoration: "none", display: "block", padding: "28px", borderRadius: "20px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", transition: "border-color 0.2s ease, transform 0.2s ease" }}>
+                <Link key={s.title} href={s.href} className="service-card-link">
                   <span style={{ fontSize: "20px", color: s.color, display: "block", marginBottom: "14px" }}>{s.icon}</span>
-                  <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#ffffff", margin: "0 0 8px 0", letterSpacing: "-0.01em" }}>{s.title}</h3>
-                  <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65, margin: 0 }}>{s.desc}</p>
+                  <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", margin: "0 0 8px 0", letterSpacing: "-0.01em", transition: "color 0.3s ease" }}>{s.title}</h3>
+                  <p style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: 1.65, margin: 0, transition: "color 0.3s ease" }}>{s.desc}</p>
                 </Link>
               ))}
             </div>
@@ -703,7 +733,7 @@ export default function HomePage() {
       <Reveal delayMs={260}>
         <section className="px-6 md:px-10 mb-20">
           <div className="max-w-6xl mx-auto">
-            <div style={{ borderRadius: "24px", padding: "40px 48px", background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.06)", display: "flex", flexWrap: "wrap", gap: "40px", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ borderRadius: "24px", padding: "40px 48px", background: "var(--thickness-bg)", border: "1px solid var(--thickness-border)", display: "flex", flexWrap: "wrap", gap: "40px", justifyContent: "space-between", alignItems: "center", transition: "all 0.3s ease" }}>
               {[
                 { icon: "✓", label: "Printing Since 1990", sub: "35+ years of expertise" },
                 { icon: "⚡", label: "3–5 Day Delivery", sub: "Rush orders available" },
@@ -712,10 +742,10 @@ export default function HomePage() {
                 { icon: "★", label: "4.9/5 Rating", sub: "1,200+ completed projects" },
               ].map((t) => (
                 <div key={t.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <span style={{ fontSize: "18px", color: "rgba(255,255,255,0.25)" }}>{t.icon}</span>
+                  <span style={{ fontSize: "18px", color: "var(--text-dim)", transition: "color 0.3s ease" }}>{t.icon}</span>
                   <div>
-                    <p style={{ fontSize: "14px", fontWeight: 700, color: "#ffffff", margin: 0, lineHeight: 1.2 }}>{t.label}</p>
-                    <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.38)", margin: 0, marginTop: "2px" }}>{t.sub}</p>
+                    <p style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", margin: 0, lineHeight: 1.2, transition: "color 0.3s ease" }}>{t.label}</p>
+                    <p style={{ fontSize: "12px", color: "var(--text-muted)", margin: 0, marginTop: "2px", transition: "color 0.3s ease" }}>{t.sub}</p>
                   </div>
                 </div>
               ))}
@@ -727,22 +757,22 @@ export default function HomePage() {
       {/* ── Final CTA ── */}
       <Reveal delayMs={280}>
         <section className="px-6 md:px-10 mb-24">
-          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden relative"
-            style={{ background: "linear-gradient(135deg,#0d0d1a 0%,#130d20 40%,#0d0d1a 100%)", border: "1px solid rgba(255,255,255,0.08)", padding: "clamp(48px,6vw,80px)" }}>
+          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden relative transition-all duration-355"
+            style={{ background: "linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--card-bg-rgb), 0.8) 40%, var(--card-bg) 100%)", border: "1px solid var(--card-border)", padding: "clamp(48px,6vw,80px)" }}>
             <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 80% at 50% 40%,rgba(236,72,153,0.09),transparent 65%)", pointerEvents: "none" }} />
             <div style={{ position: "relative", textAlign: "center" }}>
-              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.32)", display: "block", marginBottom: "18px" }}>✦ GET STARTED</span>
-              <h2 style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05, color: "#ffffff", margin: "0 0 18px 0" }}>
+              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-dim)", display: "block", marginBottom: "18px", transition: "color 0.3s ease" }}>✦ GET STARTED</span>
+              <h2 style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05, color: "var(--text-primary)", margin: "0 0 18px 0", transition: "color 0.3s ease" }}>
                 Ready to print<br /><span className="gradient-text">something unforgettable?</span>
               </h2>
-              <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.48)", maxWidth: "480px", lineHeight: 1.65, margin: "0 auto 36px" }}>
+              <p style={{ fontSize: "17px", color: "var(--text-muted)", maxWidth: "480px", lineHeight: 1.65, margin: "0 auto 36px", transition: "color 0.3s ease" }}>
                 Tell us what you need — custom sizes, materials, finishes, quantities. We'll quote within 24 hours.
               </p>
               <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
                 <Link href="/quote" className="gradient-btn flex items-center gap-2 text-sm font-bold px-8 py-4 rounded-full text-white" style={{ fontSize: "15px" }}>
                   Get a Free Quote →
                 </Link>
-                <Link href="/catalog" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "15px 28px", borderRadius: "9999px", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.75)", fontWeight: 600, fontSize: "15px", textDecoration: "none" }}>
+                <Link href="/catalog" className="browse-products-btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "15px 28px", borderRadius: "9999px", background: "rgba(var(--hover-bg-rgb), 0.07)", border: "1px solid var(--card-border)", color: "var(--text-muted)", fontWeight: 600, fontSize: "15px", textDecoration: "none", transition: "all 0.3s ease" }}>
                   Browse Products
                 </Link>
               </div>
